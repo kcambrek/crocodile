@@ -74,10 +74,10 @@ class TripleDBReader:
         sparql.setQuery(query)
         sparql.setReturnFormat(JSON)
         try:
-            # print(query)
+            
             results = sparql.query().convert()
         except FileNotFoundError:
-            print(query)
+            print("ssssssssssssssssssssssss")
         for result in results["results"]["bindings"]:
             self.d_properties[result['pName']['value']] = result['propertyLabel']['value']
         self._path_to_db = triples_file

@@ -13,13 +13,13 @@ def main(input_file = '/mnt/sda/RE-NLG-Dataset/datasets/wikidata/wikidata-triple
     for i,j,y in os.walk(folder_input):
         for file_name in y:
             # print(i + '/' + file_name)
-            for k, line in enumerate(open(i + '/' + file_name)):
+            for k, line in enumerate(open(i + '/' + file_name, encoding="UTF-8")):
                 for match in re.finditer(pattern, line):
                     wikidata_ids.add(match.group(1))
 
     # open file in read mode
-    with open(output_file,'w') as file:
-        with open(input_file, 'r') as read_obj:
+    with open(output_file,'w', encoding="UTF-8") as file:
+        with open(input_file, 'r', encoding="UTF-8") as read_obj:
             # pass the file object to reader() to get the reader object
             csv_reader = reader(read_obj)
             # Iterate over each row in the csv using reader object
@@ -35,7 +35,7 @@ def main_db(input_file = '/mnt/sda/RE-NLG-Dataset/datasets/wikidata/wikidata-tri
     for i,j,y in os.walk(folder_input):
         for file_name in y:
             # print(i + '/' + file_name)
-            for k, line in enumerate(open(i + '/' + file_name)):
+            for k, line in enumerate(open(os.path.join(i, file_name), encoding = "UTF-8")):
                 for match in re.finditer(pattern, line):
                     wikidata_ids.add(match.group(1))
     try:
@@ -56,7 +56,7 @@ def main_db(input_file = '/mnt/sda/RE-NLG-Dataset/datasets/wikidata/wikidata-tri
     c = conn.cursor()
 
     # open file in read mode
-    with open(input_file, 'r') as read_obj:
+    with open(input_file, 'r', encoding = "UTF-8") as read_obj:
         # pass the file object to reader() to get the reader object
         csv_reader = reader(read_obj)
         # Iterate over each row in the csv using reader object

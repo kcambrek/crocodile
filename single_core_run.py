@@ -3,7 +3,7 @@ from pipeline.entitylinker import *
 from pipeline.triplealigner import *
 from pipeline.datareader import WikiDataAbstractsDataReader
 from pipeline.writer import JsonWriter, JsonlWriter, OutputSplitter, NextFile
-from pipeline.coreference import *
+#from pipeline.coreference import *
 from utils.triplereader import *
 from pipeline.filter import *
 from pympler import muppy, summary
